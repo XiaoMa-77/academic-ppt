@@ -9,7 +9,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-1D3557.svg)](LICENSE)
 [![Skill format](https://img.shields.io/badge/skill-SKILL.md-457B9D.svg)](https://code.claude.com/docs/skills)
-[![PowerPoint](https://img.shields.io/badge/output-natively%20editable-2F7D4F.svg)](#为什么选择-lyceum)
+[![PowerPoint](https://img.shields.io/badge/output-natively%20editable-2F7D4F.svg)](#设计亮点)
 [![QA gate](https://img.shields.io/badge/QA-programmatic%20%2B%20visual-E07A5F.svg)](skills/lyceum/scripts/qa_check.py)
 
 [English](README.md) · [简体中文](README.zh-CN.md)
@@ -56,25 +56,21 @@ Lyceum 是一个开源的 [agent skill](https://code.claude.com/docs/skills)（`
 完整文件：[`examples/group-meeting-demo/group-meeting-demo.pptx`](examples/group-meeting-demo/group-meeting-demo.pptx) ·
 生成脚本：[`build_demo.js`](examples/group-meeting-demo/build_demo.js)
 
-## 为什么选择 Lyceum
+## 设计亮点
 
-PPT skill 赛道已经很拥挤，但几乎每个竞品都在结构性的地方缺席：
+Lyceum 自身提供的能力：
 
-| 能力 | **Lyceum** | academic-pptx-skill | ppt-master | MiniMax PPTX | Anthropic pptx |
-|---|---|---|---|---|---|
-| 独立学术场景系统 | **6 套** | 1 种风格 | —（通用） | —（通用） | —（通用） |
-| 每场景独立设计系统（各 3 主题） | ✅ 18 套 | ❌ 1 套 | 模板 | 4 个配方 | — |
-| 原生可编辑输出（图表=真图表） | ✅ QA 强制 | 依赖底层 | ✅ | ✅ | ✅ |
-| **程序化 QA 闸门**（溢出/重叠/占位符/字体/可编辑性审计） | ✅ 内置 | ❌ | ❌ | 部分 | 部分 |
-| 内容方法论（行动式标题·幽灵放映测试·断言→证据） | ✅ 学术化改造 | ✅ | ❌ | ❌ | 部分 |
-| 中文学术排版（中西分 run·标点规则） | ✅ | ❌ | 部分 | 部分 | 部分 |
-| 场景专属页面（创新点页·问题分析页·指标对照表·甘特图·批注栏） | ✅ | 部分 | ❌ | ❌ | ❌ |
-| 负结果与局限性的表述指导 | ✅ 分场景 | 部分 | ❌ | ❌ | ❌ |
-| 已有 PPT 的编辑与风格重构 | ✅ | ❌ | 仅转换 | ❌ | ✅ |
-| 可移植（不绑定特定运行时） | ✅ 纯 SKILL.md | ✅ | 需 Python 环境 | 自有技术栈 | ✅ |
-
-> Lyceum 与 Anthropic 官方 `pptx` skill 是**互补关系**：检测到官方 skill 时，Lyceum 将
-> 语法级执行全部委托给它，自己专注场景系统层（见 [`SKILL.md`](skills/lyceum/SKILL.md)）。
+- **六套学术场景系统**——组会、开题、答辩、论文精读、课程报告、进展汇报，
+  每套配三个完整设计主题。
+- **程序化 QA 闸门**——每次构建自动审计溢出、重叠、占位符、字体与可编辑性，
+  通过 QA 的幻灯片无需逐页目检即可交付。
+- **原生可编辑输出**——图表是真图表、表格是真表格，不存在截图烘焙。
+- **内置内容方法论**——行动式标题、幽灵放映测试、断言→证据映射，并分场景
+  提供负结果与局限性的诚实表述指导。
+- **中文学术排版**——中西文分 run 与标点规则在构造层处理。
+- **可移植**——一份 SKILL.md 加两个普通依赖（`python-pptx`、`pptxgenjs`）；
+  若智能体已装有官方 `pptx` skill，Lyceum 会把语法级执行委托给它，
+  自身专注场景系统层（见 [`SKILL.md`](skills/lyceum/SKILL.md)）。
 
 ## 快速开始
 

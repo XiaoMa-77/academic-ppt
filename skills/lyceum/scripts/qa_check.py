@@ -9,11 +9,14 @@ Checks a .pptx for the failure modes that matter in scholarly presentations:
   [font]       text runs without an explicit font name (breaks CJK machines)
   [editability] pages that look like full-bleed rendered images (not editable)
   [canvas]     slide size differing from the 13.33x7.5in design target
+  [geometry]   negative shape extents that PowerPoint refuses to open
+  [density]    optional sparse-content / missing-exhibit hints (--academic)
 
 Usage:
   python qa_check.py deck.pptx                 # human-readable report
   python qa_check.py deck.pptx --json          # machine-readable report
   python qa_check.py deck.pptx --info          # also show INFO-level notes
+  python qa_check.py deck.pptx --academic      # content metrics + density hints
 
 Exit codes: 0 clean · 1 errors found · 2 warnings only · 3 usage/input error
 
@@ -92,6 +95,72 @@ def iter_frames(shapes):
             yield s
 
 
+def iter_shapes(shapes):
+    """Include nested shapes without applying group-coordinate assumptions."""
+    for shape in shapes:
+        yield shape
+        if shape.shape_type == 6:
+            yield from iter_shapes(shape.shapes)
+
+
+def academic_metrics(slide, idx: int, issues: list[Issue]) -> dict:
+    """Report exhibit candidates, not whether a figure supports a research claim.
+
+    Restrict density to the body band so a long title/footer cannot hide an empty
+    page. Covers, indexes, references and explicit discussion pages are exempt;
+    the role is optional metadata in notes, e.g. ``Lyceum role: cover``.
+    """
+    notes = slide.notes_slide.notes_text_frame.text if slide.has_notes_slide else ""
+    match = re.search(r"Lyceum role:\s*([a-z-]+)", notes, re.I)
+    role = match.group(1).lower() if match else "content"
+    body = [sh for sh in iter_shapes(slide.shapes)
+            if sh.shape_type != 6 and 1.45 <= sh.top / EMU_PER_IN < 6.95]
+    texts = []
+    charts = tables = pictures = connectors = nodes = 0
+    for sh in body:
+        if getattr(sh, "has_text_frame", False):
+            texts.append(sh.text_frame.text)
+        if getattr(sh, "has_chart", False):
+            charts += 1
+        if getattr(sh, "has_table", False):
+            tables += 1
+            texts.extend(cell.text for row in sh.table.rows for cell in row.cells)
+        area = sh.width * sh.height / EMU_PER_IN ** 2
+        if sh.shape_type == 13 and area >= 0.8:
+            pictures += 1
+        geometry = sh._element.find(
+            ".//{http://schemas.openxmlformats.org/drawingml/2006/main}prstGeom"
+        )
+        # PptxGenJS exports lines as p:sp/prstGeom=line, not p:cxnSp.
+        # Plain horizontal separators do not establish a process diagram.
+        is_line = sh.shape_type == 9 or (geometry is not None and geometry.get("prst") == "line")
+        arrow_ends = sh._element.findall(
+            ".//{http://schemas.openxmlformats.org/drawingml/2006/main}headEnd"
+        ) + sh._element.findall(
+            ".//{http://schemas.openxmlformats.org/drawingml/2006/main}tailEnd"
+        )
+        has_arrow = any(end.get("type") not in {None, "none"} for end in arrow_ends)
+        if is_line and (sh.shape_type == 9 or has_arrow):
+            connectors += 1
+        if sh.shape_type == 1 and not is_line and 0.1 <= area <= 30:
+            nodes += 1
+    chars = len(re.sub(r"\s+", "", "".join(texts)))
+    diagram_candidate = connectors >= 1 and nodes >= 3
+    exhibit = bool(charts or tables or pictures or diagram_candidate)
+    exempt = role in {"cover", "agenda", "divider", "references", "discussion", "closing"}
+    if not exempt:
+        if chars < 80 and not exhibit:
+            issues.append(Issue("WARNING", "density", idx,
+                f"body has only {chars} native characters and no exhibit candidate; "
+                "consider merging or adding sourced explanation"))
+        if not exhibit:
+            issues.append(Issue("WARNING", "exhibit", idx,
+                "no substantive-size image, native chart/table or diagram candidate; "
+                "review whether this research task needs a figure"))
+    return {"slide": idx, "role": role, "body_chars": chars, "charts": charts,
+            "tables": tables, "pictures": pictures, "diagram_candidate": diagram_candidate}
+
+
 def estimate_frame(shape, default_pt: float = 18.0) -> dict:
     """Estimate rendered text geometry for one text-bearing shape."""
     box_w_pt = (shape.width or 0) / EMU_PER_PT
@@ -139,6 +208,27 @@ def check_slide(idx: int, slide, issues: list[Issue], canvas_in: tuple[float, fl
     text_shapes = []
     pic_area = 0
     total_area = Wemu * Hemu
+
+    for sh in iter_shapes(slide.shapes):
+        if sh.width < 0 or sh.height < 0:
+            issues.append(Issue("ERROR", "geometry", idx,
+                f"'{sh.name}' has negative width/height — invalid DrawingML extent"))
+    for paragraph in slide._element.findall(
+        ".//{http://schemas.openxmlformats.org/drawingml/2006/main}p"
+    ):
+        props = paragraph.findall(
+            "{http://schemas.openxmlformats.org/drawingml/2006/main}pPr"
+        )
+        if len(props) > 1:
+            issues.append(Issue("ERROR", "xml", idx,
+                "paragraph has duplicate properties — PowerPoint may refuse to open it"))
+    for cell_props in slide._element.findall(
+        ".//{http://schemas.openxmlformats.org/drawingml/2006/main}tcPr"
+    ):
+        if cell_props.get("anchor") not in {None, "t", "ctr", "b", "just", "dist"}:
+            issues.append(Issue("ERROR", "xml", idx,
+                f"invalid table anchor {cell_props.get('anchor')!r}; "
+                "PptxGenJS tables use valign='middle'"))
 
     for sh in slide.shapes:
         # off-canvas (allow 0.02" tolerance)
@@ -222,6 +312,8 @@ def main() -> int:
     ap.add_argument("deck")
     ap.add_argument("--json", action="store_true")
     ap.add_argument("--info", action="store_true")
+    ap.add_argument("--academic", action="store_true",
+                    help="report academic content metrics and sparse-page hints")
     args = ap.parse_args()
 
     try:
@@ -241,8 +333,11 @@ def main() -> int:
             f"canvas is {canvas_in[0]:.2f}x{canvas_in[1]:.2f}in, design target is "
             f"{CANONVAS_IN[0]:.2f}x{CANONVAS_IN[1]:.2f}in — font-size rules assume 13.33x7.5"))
 
+    metrics = []
     for idx, slide in enumerate(prs.slides, start=1):
         check_slide(idx, slide, issues, canvas_in)
+        if args.academic:
+            metrics.append(academic_metrics(slide, idx, issues))
 
     errors = [i for i in issues if i.level == "ERROR"]
     warns = [i for i in issues if i.level == "WARNING"]
@@ -256,6 +351,7 @@ def main() -> int:
             "errors": [vars(i) for i in errors],
             "warnings": [vars(i) for i in warns],
             "infos": [vars(i) for i in infos],
+            **({"content_metrics": metrics} if args.academic else {}),
         }, ensure_ascii=False, indent=2))
     else:
         for i in issues:
@@ -264,6 +360,11 @@ def main() -> int:
             print(i)
         print(f"\n== Lyceum QA · {len(prs.slides._sldIdLst)} slides · "
               f"{len(errors)} error(s), {len(warns)} warning(s) ==")
+        for item in metrics:
+            print(f"  slide {item['slide']}: {item['body_chars']} body chars, "
+                  f"{item['charts']} chart(s), {item['tables']} table(s), "
+                  f"{item['pictures']} picture(s), "
+                  f"diagram candidate={item['diagram_candidate']}")
 
     return 1 if errors else (2 if warns else 0)
 

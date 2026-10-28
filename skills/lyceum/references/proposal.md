@@ -1,5 +1,7 @@
 # Scenario · 开题报告 (Research Proposal Defense)
 
+> **Default visual style:** read [academic-blue.md](academic-blue.md). Use this file for scenario structure and research content. The named palettes, cover treatments and card layouts below are optional legacy themes; they do not override the shared white/blue style or its figure and density guidance.
+
 Presenting a NOT-yet-done thesis/project plan to a panel that decides whether the route is
 worth three years. The audience is professors who will probe feasibility, novelty, and
 completeness of the research design. The genre is a **contract for the future**: unlike a
@@ -34,7 +36,7 @@ classic fatal error; vagueness is the runner-up.
 | 13 | 预期成果 | 1 | 论文(级别+数量合理)·专利/软著·学位论文 — 保守承诺 |
 | 14 | 参考文献 | 0–1 | 核心文献15–30条(正文页脚已引用过的不重复列) |
 
-## Design tokens — theme "蓝图青" (default)
+## Design tokens — theme "蓝图青" (optional legacy theme)
 
 Engineering-blueprint reading: cool paper, white plan cards, teal-blueprint ink with
 terracotta risk/gap markers — a plan that looks engineered, not decorated.
@@ -82,8 +84,9 @@ native; the user will drag bars when plans change — that is the point.
 
 Center-stacked three question cards (10.5" wide, 1.05" each, 0.25 gaps), each: Q-number in
 ACCENT (24pt bold) + the sub-question as ONE interrogative sentence (20pt) + 完成标志 in 13pt
-MUTED (`衡量: 在X数据集上达到Y`). Top: the umbrella question in 24pt bold PRIMARY. No other
-content — this page gets photographed and quoted in the panel's opinion form.
+MUTED (`衡量: 在X数据集上达到Y`). Top: the umbrella question in 24pt bold PRIMARY.
+For the default style, prefer a question–method–validation mapping with a supporting task
+diagram instead of three mostly empty cards; use only facts available in the source.
 
 ## Writing rules
 

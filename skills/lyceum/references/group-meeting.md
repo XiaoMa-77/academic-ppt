@@ -1,5 +1,7 @@
 # Scenario · 组会汇报 (Lab Group Meeting)
 
+> **Default visual style:** read [academic-blue.md](academic-blue.md). Use this file for scenario structure and research content. The named palettes, cover treatments and card layouts below are optional legacy themes; they do not override the shared white/blue style or its figure and density guidance.
+
 The weekly ritual of every research group. The audience is your advisor and labmates — they know
 the domain, they have seen your last five decks, and their time is sliced across four students
 tonight. The genre is a **working session, not a performance**: dense, honest, problem-centric.
@@ -30,7 +32,7 @@ best debugging resource.
 Weeks with no experiments (theory reading / setup work): swap 进展详情 for 文献/方法调研 pages
 and say so plainly on the cover — nobody respects a dressed-up empty week.
 
-## Design tokens — theme "研纸墨蓝" (default)
+## Design tokens — theme "研纸墨蓝" (optional legacy theme)
 
 Five-layer color system: warm-paper page background (never flat white), white cards, a stepped
 ink ramp for structure and charts, terracotta as the single accent. Dark ink cover creates the
@@ -103,7 +105,7 @@ ACCENT only on the single most suspicious number in the exhibit.
 - 失败实验用正文讲，不要藏进附录 — 导师最值钱的输入往往来自失败页。
 - 下期计划 items start with a verb and are falsifiable (`跑通`→`复现至±0.5pt`).
 - 求助页 names people if the ask is for a specific person's tool/data/experience.
-- 中文行文，专业术语保留英文；一页正文 ≤ 8 行。
+- 中文行文，专业术语保留英文；按图示区域分配正文，保留设置、证据和判断，不设全页八行上限。
 
 ## Common failures
 

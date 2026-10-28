@@ -1,0 +1,17 @@
+{
+  "name": "academic-ppt",
+  "version": "1.1.0",
+  "private": true,
+  "description": "Editable academic PPT examples and quality checks",
+  "scripts": {
+    "build": "node examples/group-meeting-demo/build_demo.js",
+    "qa": "python skills/lyceum/scripts/qa_check.py examples/group-meeting-demo/group-meeting-demo.pptx --academic",
+    "test": "python -m unittest discover -s examples/qa-selftest -p test_*.py -v"
+  },
+  "dependencies": {
+    "pptxgenjs": "4.0.1"
+  },
+  "overrides": {
+    "image-size": "2.0.4"
+  }
+}

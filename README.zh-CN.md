@@ -1,157 +1,151 @@
 <div align="center">
 
-# Lyceum · 吕克昂
+# Academic PPT · 学术 PPT
 
-**学术汇报引擎 —— 为 AI 编程代理打造的六套研究生级演示系统。**
+**为研究生学术汇报生成内容充实、图示清晰、原生可编辑的 PowerPoint。**
 
-*名字取自亚里士多德创立的吕克昂学园——学者们边散步边讲学之地。
-此后每一次组会、答辩与会议报告，都是吕克昂的回声。*
+原名 Lyceum · 吕克昂。保留 `lyceum` 技能入口，已有安装和调用方式兼容。
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-1D3557.svg)](LICENSE)
-[![Skill format](https://img.shields.io/badge/skill-SKILL.md-457B9D.svg)](https://code.claude.com/docs/skills)
-[![PowerPoint](https://img.shields.io/badge/output-natively%20editable-2F7D4F.svg)](#设计亮点)
-[![QA gate](https://img.shields.io/badge/QA-programmatic%20%2B%20visual-E07A5F.svg)](skills/lyceum/scripts/qa_check.py)
-
-[English](README.md) · [简体中文](README.zh-CN.md)
+[English](README.md) · [简体中文](README.zh-CN.md) · [MIT](LICENSE)
 
 </div>
 
----
+## 默认风格：学术蓝白
 
-## Lyceum 是什么
+默认采用白底、深蓝标题、深色正文、细描边与阶段配色。每页围绕一个研究任务，
+把问题、方法、证据和解读组织在一起。保留六套学术场景的内容方法，旧配色主题可显式选择。
 
-Lyceum 是一个开源的 [agent skill](https://code.claude.com/docs/skills)（`SKILL.md` 技能包），
-教会 Claude Code、ZCode、Codex CLI 或任何兼容 SKILL.md 的智能体生成与编辑
-**在 PowerPoint 中保持原生可编辑的学术汇报幻灯片**——真实的文本框、真实的图表
-（右键"编辑数据"即可改）、真实的表格与形状。
+- **横向技术路线**：问题 → 数据准备 → 模型/方法 → 验证 → 输出，下方补阶段说明。
+- **左流程、右论证**：科学问题、研究方法、阶段产物逐行对应。
+- **背景证据 → 科学问题**：从具体任务或案例推导研究缺口。
+- **方法与结果图示**：原生架构图、数据流、柱状图、训练曲线、表格和计划依赖图。
 
-它不是"一个模板换个颜色"。它内置**六套完整的场景系统**，每套都有自己的页面骨架、
-设计令牌、内容方法论与主题变体——因为组会和答辩是两种不同的文体，不是同一份 PPT
-换配色：
+正文按区域组织，常规内容页可从约 120–260 个汉字加图表起步，按报告时长调整。
+相关子结论可以同页呈现，不再因“两条结论”或“超过八行”机械拆页。
+图示需要解释机制或证据；不会为了填满页面补造实验。
 
-| 场景 | 时长 | 页数 | 规范文件 |
-|---|---|---|---|
-| 组会汇报 | 15–40 分钟 | 8–20 | [`references/group-meeting.md`](skills/lyceum/references/group-meeting.md) |
-| 学术会议报告 | 12–20 分钟 | 12–18 | [`references/conference.md`](skills/lyceum/references/conference.md) |
-| 科研进展·中期·结题 | 15–30 分钟 | 12–25 | [`references/progress.md`](skills/lyceum/references/progress.md) |
-| 学位论文答辩 | 15–40 分钟 | 20–40 | [`references/defense.md`](skills/lyceum/references/defense.md) |
-| 开题报告 | 10–20 分钟 | 15–25 | [`references/proposal.md`](skills/lyceum/references/proposal.md) |
-| 文献分享 / Journal Club | 20–45 分钟 | 12–25 | [`references/paper-reading.md`](skills/lyceum/references/paper-reading.md) |
+完整规范：[`academic-blue.md`](skills/lyceum/references/academic-blue.md)。
 
-每个场景附 **3 套主题变体**（共 18 套设计系统），全部基于五层视觉模型——纸感页面、
-内容卡片、色阶墨系、唯一强调色、深色封面三明治——外加中英文**分 run 排版规则**，
-让数字不再像"顺手打出来的"。
+## 9 页可编辑示例
 
-## 效果示例
+主题：小样本分类与对比学习。**所有研究数据和曲线均为虚构演示**，页脚和备注均有标识。
 
-由 Lyceum 生成的 9 页组会汇报（主题 *研纸墨蓝*，研究内容为虚构演示数据）：
-
-| | | |
+| 背景 → 科学问题 | 左流程、右论证 | 横向技术路线 |
 |---|---|---|
-| ![封面](examples/group-meeting-demo/render/slide-1.png) | ![回顾](examples/group-meeting-demo/render/slide-2.png) | ![图表](examples/group-meeting-demo/render/slide-4.png) |
-| 墨蓝深底封面 · 周次索引卡 | 纸感页面 · 证据卡片 | 原生色阶柱状图 |
-| ![表格](examples/group-meeting-demo/render/slide-5.png) | ![问题](examples/group-meeting-demo/render/slide-6.png) | ![求助](examples/group-meeting-demo/render/slide-8.png) |
-| 原生表格 + 决策面板 | 2×2 问题分析页 | 有归属人的具体求助 |
+| ![研究背景](examples/group-meeting-demo/render/slide-2.png) | ![研究内容](examples/group-meeting-demo/render/slide-3.png) | ![技术路线](examples/group-meeting-demo/render/slide-4.png) |
+| 方法架构 | 结果图表 | 曲线与排查链 |
+| ![方法架构](examples/group-meeting-demo/render/slide-5.png) | ![实验比较](examples/group-meeting-demo/render/slide-6.png) | ![问题分析](examples/group-meeting-demo/render/slide-7.png) |
 
-完整文件：[`examples/group-meeting-demo/group-meeting-demo.pptx`](examples/group-meeting-demo/group-meeting-demo.pptx) ·
-生成脚本：[`build_demo.js`](examples/group-meeting-demo/build_demo.js)
+[下载完整 PPTX](examples/group-meeting-demo/group-meeting-demo.pptx) ·
+[生成脚本](examples/group-meeting-demo/build_demo.js) ·
+[全部页面预览](examples/group-meeting-demo/render/)
 
-## 设计亮点
+文字为文本框，示意图为形状与连线，数据图表内嵌工作簿，表格可直接修改。
+图表原始演示数值存放在对应页备注中。
 
-Lyceum 自身提供的能力：
+## 六套学术场景
 
-- **六套学术场景系统**——组会、开题、答辩、论文精读、课程报告、进展汇报，
-  每套配三个完整设计主题。
-- **程序化 QA 闸门**——每次构建自动审计溢出、重叠、占位符、字体与可编辑性，
-  通过 QA 的幻灯片无需逐页目检即可交付。
-- **原生可编辑输出**——图表是真图表、表格是真表格，不存在截图烘焙。
-- **内置内容方法论**——行动式标题、幽灵放映测试、断言→证据映射，并分场景
-  提供负结果与局限性的诚实表述指导。
-- **中文学术排版**——中西文分 run 与标点规则在构造层处理。
-- **可移植**——一份 SKILL.md 加两个普通依赖（`python-pptx`、`pptxgenjs`）；
-  若智能体已装有官方 `pptx` skill，Lyceum 会把语法级执行委托给它，
-  自身专注场景系统层（见 [`SKILL.md`](skills/lyceum/SKILL.md)）。
+| 场景 | 建议时长 | 场景参考 |
+|---|---|---|
+| 组会汇报 | 15–40 分钟 | [group-meeting.md](skills/lyceum/references/group-meeting.md) |
+| 学术会议报告 | 12–20 分钟 | [conference.md](skills/lyceum/references/conference.md) |
+| 科研进展 / 中期 / 结题 | 15–30 分钟 | [progress.md](skills/lyceum/references/progress.md) |
+| 学位论文答辩 | 15–40 分钟 | [defense.md](skills/lyceum/references/defense.md) |
+| 开题报告 | 10–20 分钟 | [proposal.md](skills/lyceum/references/proposal.md) |
+| 文献分享 / Journal Club | 20–45 分钟 | [paper-reading.md](skills/lyceum/references/paper-reading.md) |
 
-## 快速开始
+场景参考决定论证结构，学术蓝白规范决定默认视觉与密度。用户提供的院校模板和参考图优先。
+原有 18 套主题作为可选方案保留；默认无需选择主题即可开始。
 
-前置要求：支持 SKILL.md 的智能体 + `python-pptx`（QA）+ `pptxgenjs`（构建）。
+## 安装技能
 
 ```bash
-git clone https://github.com/<you>/lyceum.git
+git clone https://github.com/XiaoMa-77/academic-ppt.git
+cd academic-ppt
 
 # Claude Code
-mkdir -p ~/.claude/skills && cp -r lyceum/skills/lyceum ~/.claude/skills/
+mkdir -p ~/.claude/skills
+cp -r skills/lyceum ~/.claude/skills/
 
-# ZCode / Codex CLI / 任何兼容 .agents 的智能体
-mkdir -p ~/.agents/skills && cp -r lyceum/skills/lyceum ~/.agents/skills/
-
-# 可选：QA 与构建依赖
-pip install python-pptx && npm install -g pptxgenjs
+# 兼容 .agents/skills 的智能体
+mkdir -p ~/.agents/skills
+cp -r skills/lyceum ~/.agents/skills/
 ```
 
-然后直接对话即可：
+Windows PowerShell 可以使用：
+
+```powershell
+New-Item -ItemType Directory -Force "$env:USERPROFILE/.agents/skills" | Out-Null
+Copy-Item -Recurse skills/lyceum "$env:USERPROFILE/.agents/skills/"
+```
+
+对话示例：
 
 ```text
-帮我准备下周三的组会PPT，主题是对比学习在小样本分类上的进展，
-上周复现了基线，这周有增强策略对比和消融实验，另外Mixup有bug要讨论
-
-用 Lyceum 做一份硕士答辩PPT框架，研究方向是联邦学习里的异构模型聚合，
-创新点有三个，给我深一点的学院风配色
-
-Journal club 分享这篇 NeurIPS 论文，重点讲方法和我觉得站不住的消融部分
+用 Lyceum 做一份开题汇报，采用学术蓝白风格。
+每页保留研究问题、方法细节和对应图示，技术路线用横向流程，
+研究内容用左流程右说明。根据我给的数据制作结果图，不要补造结果。
 ```
 
-技能自动路由：组会 / 答辩 / 开题 / 中期 / 结题 / 会议 / journal club 等关键词自动选择
-场景系统；语义模糊时只问一个澄清问题，绝不瞎猜。
+## 构建与测试
 
-### QA 闸门
-
-每份 deck 交付前过两道闸门：
+需要 Node.js 22+、Python 3.10+。请在仓库根目录执行：
 
 ```bash
-python skills/lyceum/scripts/qa_check.py deck.pptx
-# 检查：文本溢出（中西文宽度感知）· 形状越界 · 文本框重叠 · 占位符残留
-#       字体覆盖 · 可编辑性审计
-# 退出码 0=干净 · 1=有错误 · 2=仅警告 · --json 输出机器可读报告
+npm ci
+python -m pip install -r requirements-qa.txt
+npm run build
+npm run qa
+npm test
 ```
 
-外加渲染视觉审查。QA 脚本自带负向测试夹具（[`examples/qa-selftest/`](examples/qa-selftest/)）
-——七个植入缺陷，七个全部捕获。
+- `build` 生成 9 页示例，自动规范化生成库的重复段落属性，保留中英混排与原生对象。
+- `qa` 检查溢出、越界、文本重叠、占位符、字体、可编辑性和已知 XML 兼容性问题；
+  `--academic` 同时输出正文量、图表/表格/图片和流程图候选提示。
+- `test` 运行 13 项回归检查，覆盖密度、原生图示、兼容性修复及原有负向夹具。
+- GitHub Actions 在推送和 PR 时重建示例、运行 QA 与回归测试，并保存 PPTX 构建产物。
+
+自定义输出位置：
+
+```bash
+node examples/group-meeting-demo/build_demo.js /path/to/output.pptx
+```
+
+自定义 Python 可设置环境变量 `PYTHON`，指向已安装 QA 依赖的解释器。
+图像尺寸依赖固定为修复版本，安装由 `package-lock.json` 锁定。
+
+## 渲染与视觉复核
+
+Windows 安装 PowerPoint 后：
+
+```powershell
+./skills/lyceum/scripts/render_powerpoint.ps1 `
+  -DeckPath examples/group-meeting-demo/group-meeting-demo.pptx `
+  -OutDir examples/group-meeting-demo/render
+```
+
+脚本以只读方式打开 PPT，逐页导出 1440×810 预览；打不开或导出失败时立即报错。
+其他平台可用 LibreOffice 转 PDF，再用 `pdftoppm` 导出页面，需安装相应中文字体。
+
+程序化检查是启发式检查。交付前仍需逐页查看字体、标签、连线、标点、数值来源和图表解读。
+`--academic` 的“流程图候选”只表示检测到形状和线条，不能判断科研逻辑。
 
 ## 仓库结构
 
 ```text
-lyceum/
-├── skills/lyceum/
-│   ├── SKILL.md                 # 路由 · 工作流 · 铁律 · 视觉系统 · QA 协议
-│   ├── references/              # 6 套场景系统（骨架·令牌·模板·陷阱清单）
-│   └── scripts/qa_check.py      # 程序化质量闸门
-├── examples/
-│   ├── group-meeting-demo/      # 9 页示例 deck + 生成脚本 + 渲染图
-│   └── qa-selftest/             # 证明 QA 闸门有效的负向夹具
-├── README.md · README.zh-CN.md · CHANGELOG.md · LICENSE
+skills/lyceum/
+  SKILL.md                         # 路由、内容方法、原生编辑约束
+  references/academic-blue.md      # 默认视觉、密度与 figure 规范
+  references/                     # 六套场景与可选旧主题
+  scripts/qa_check.py              # 质量检查与密度提示
+  scripts/normalize_pptx.py        # 生成文件 XML 兼容处理
+  scripts/render_powerpoint.ps1    # Windows 原生渲染验证
+examples/group-meeting-demo/       # 9 页示例、脚本和全部预览
+examples/qa-selftest/              # 缺陷样例与回归检查
+.github/workflows/quality.yml      # 自动构建与测试
 ```
 
-## 路线图
+贡献新场景时请给出真实页面任务与图示方案；修改示例后重新构建、QA、渲染并查看所有页面。
+技能入口保持精简，详细规范放入 `references/`。
 
-- [ ] 每套主题导出 `.potx` 母版，供 PowerPoint 原生复用
-- [ ] 中英双栏双语模式（国际项目/留学生）
-- [ ] `restyle` 规范：页面角色识别，把旧 deck 一键升级为 Lyceum 主题
-- [ ] 更多场景：课程 seminar、学术海报（A0）、三分钟学术演讲
-
-## 参与贡献
-
-欢迎 Issue 与 PR——尤其是**新主题变体**（色板须通过五层视觉模型检验）与
-**新场景**（须附真实页面骨架）。改动示例 deck 后请运行
-`python skills/lyceum/scripts/qa_check.py`；SKILL.md 保持在 500 行以内
-（深度内容放进 `references/`）。
-
-## 许可
-
-[MIT](LICENSE) © 2026 Lyceum 贡献者。示例 deck 中的研究数据均为虚构。
-
-<div align="center">
-
-*先研究透彻，再讲得明白。* —— 谨此致敬吕克昂
-
-</div>
+[MIT](LICENSE) © 2026 Lyceum 贡献者。

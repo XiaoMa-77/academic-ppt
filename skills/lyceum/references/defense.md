@@ -1,5 +1,7 @@
 # Scenario · 学位论文答辩 (Thesis Defense)
 
+> **Default visual style:** read [academic-blue.md](academic-blue.md). Use this file for scenario structure and research content. The named palettes, cover treatments and card layouts below are optional legacy themes; they do not override the shared white/blue style or its figure and density guidance.
+
 The terminal ritual of a degree (本科/硕士/博士). The audience is a defense committee
 (答辩委员会) of 3–7 professors who have read (or skimmed) the thesis, plus a public gallery.
 Time is strictly chaired; after the talk comes a gauntlet of questions where the deck's backup
@@ -37,7 +39,7 @@ Confidence without arrogance; completeness without bloat.
 Chapter dividers (第三章…) between 研究内容 blocks if the thesis is chapter-organized:
 a near-empty page with just the chapter number+title, PRIMARY background, white text.
 
-## Design tokens — theme "学院蓝" (default)
+## Design tokens — theme "学院蓝" (optional legacy theme)
 
 Ivory-cold paper, white exhibit cards, academy blue ink with a burnt-sienna accent — the
 ceremony and rigor of a university defense, calmer than a conference deck.

@@ -1,6 +1,5 @@
 # dependencies
 node_modules/
-package-lock.json
 
 # build artifacts
 *.log
@@ -15,3 +14,7 @@ desktop.ini
 .vscode/
 .idea/
 *.swp
+
+# local planning and Python cache
+.planning/
+__pycache__/

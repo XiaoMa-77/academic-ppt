@@ -1,5 +1,7 @@
 # Scenario · 科研进展 / 中期 / 结题汇报 (Project Progress & Final Report)
 
+> **Default visual style:** read [academic-blue.md](academic-blue.md). Use this file for scenario structure and research content. The named palettes, cover treatments and card layouts below are optional legacy themes; they do not override the shared white/blue style or its figure and density guidance.
+
 Reporting a funded project (国家自然科学基金 / 省基金 / 校级课题 / 企业合作) to the panel that
 owns its task book (任务书). This is an **audit genre**: the panel checks delivery against the
 approved plan, line by line. Unlike a conference talk, comprehensiveness beats elegance —
@@ -33,7 +35,7 @@ verbatim), English terms in parentheses on first use.
 | 12 | 总结 | 1 | 指标完成对照表(任务书指标 vs 完成情况) — 全绿或如实 |
 | 13 | 致谢/备份 | 1+ | 致谢基金委/单位; 完整成果清单与佐证材料备查页 |
 
-## Design tokens — theme "卷宗红" (default)
+## Design tokens — theme "卷宗红" (optional legacy theme)
 
 Dossier aesthetic: archive-paper pages, white evidence cards, a deep vermilion ink system that
 reads official without sliding into 党政红 template clichés. Completion percentages in bronze.

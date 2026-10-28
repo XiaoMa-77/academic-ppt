@@ -1,5 +1,7 @@
 # Scenario · 文献分享 / Journal Club (Paper Reading)
 
+> **Default visual style:** read [academic-blue.md](academic-blue.md). Use this file for scenario structure and research content. The named palettes, cover treatments and card layouts below are optional legacy themes; they do not override the shared white/blue style or its figure and density guidance.
+
 Presenting someone else's paper to your lab (journal club, 论文精读会, seminar). The audience
 mixes juniors who need the tutorial AND seniors who want the critique. The genre is
 **explication plus judgment**: first make the paper make sense (generous, rigorous), then
@@ -34,7 +36,7 @@ summarizes is a failed paper-reading deck.
 | 13 | 讨论问题 | 0–1 | 抛给组里的2–3个开放问题 |
 | 14 | 参考 | 0–1 | 本文+关键对比文献5–10条 |
 
-## Design tokens — theme "纸边笔记" (default)
+## Design tokens — theme "纸边笔记" (optional legacy theme)
 
 The deck is a READING aid, so the system separates paper content from presenter voice in
 two visual registers: cream note-paper pages with white figure mats (the paper's world) and

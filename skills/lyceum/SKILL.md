@@ -13,9 +13,10 @@ group meeting and a thesis defense are different genres, not one style with diff
 
 ## Step 1 · Route to a scenario system
 
-Read the matching reference file BEFORE planning any content. Each reference defines the page
-skeleton, design tokens (exact hex values, font sizes, layout grids), scenario-specific writing
-rules, and 2–3 ready-made theme variants.
+Read the matching scenario reference for the page skeleton and research argument, then read
+[`references/academic-blue.md`](references/academic-blue.md) for the default visual and density
+contract. Its white/blue system overrides legacy theme tokens unless the user selects a named
+legacy theme. User-supplied references and institutional templates take precedence over both.
 
 | Scenario | Trigger phrases | Typical talk | Pages | Reference |
 |---|---|---|---|---|
@@ -73,12 +74,13 @@ the original to `<stem>_backup.pptx` next to it (never to /tmp).
    explicitly and either ask once (interactive) or generate clearly-marked placeholder slides
    `【待补充：xxx】` (autonomous). NEVER invent experimental results, citations, or numbers; an
    invented finding in a defense deck is a career-level bug.
-3. **Plan the outline first.** Produce the page list from the reference's skeleton: for each page
-   write its **action title** (see Content method) and the evidence it shows. Check the outline
-   against the reference's page budget and the ghost-deck test before writing any code.
-4. **Build** with pptxgenjs (preferred) or python-pptx, following the reference's design tokens
-   verbatim — they are a system, not suggestions: palette roles, font stack, title zone, margins,
-   and the scenario's signature motif must match on every slide. Technical execution rules are in
+3. **Plan the outline first.** For each page write the research task, action title, 3–5 useful
+   information units where supported, main figure, source, and interpretation. Merge fragmented
+   pages that describe the same task. Scenario page budgets are starting points, not quotas.
+   Check the ghost-deck test and figure coverage before coding; do not add filler to reach a count.
+4. **Build** with the host's supported native presentation toolchain (the repository example
+   uses pptxgenjs). Apply the chosen style consistently: palette roles, font stack, title zone,
+   margins, diagram grammar, and evidence captions. Technical execution rules are in
    "Technical execution" below; if the host environment provides the `presentations:pptx` skill,
    load it and defer to it for pptxgenjs/python-pptx syntax depth, file-corruption pitfalls, and
    rendering commands.
@@ -96,8 +98,9 @@ Pyramid Principle, Weiss's assertion-evidence talking) adapted for research talk
   `对比实验：方法A在低信噪比下F1高出7.2个点` instead of `实验结果`. The audience should be able
   to read ONLY the titles in sequence and reconstruct the whole argument (the "ghost deck test").
   Scenario references define where this rule bends (e.g. defense chapter dividers).
-- **One slide, one claim.** Each slide makes exactly one assertion and shows the evidence for
-  it. Two claims → two slides. A slide that needs "and" in its action title is two slides.
+- **One slide, one research task.** Related subclaims can share a page when the audience needs
+  to compare them: setup + result + explanation, or problem + method + expected output.
+  Split when the reasoning no longer fits legibly, not because a title contains "and".
 - **Assertion → evidence → so-what.** Title asserts; the body shows the exhibit (chart, table,
   diagram, equation) that proves it; a caption or one bold line says why it matters. Bullets
   alone are a fallback, not a default — prefer the exhibit.
@@ -123,33 +126,28 @@ Pyramid Principle, Weiss's assertion-evidence talking) adapted for research talk
 - CJK runs wrap mid-phrase: give Chinese text boxes ~15% more width than the Latin equivalent
   and keep lines short; full-width punctuation never starts a line; parentheticals like
   `（p<0.01）` must not break across lines — keep them with their number in one run.
-- Body ≥ 18pt on a 13.33×7.5" canvas (24pt preferred for conference/defense where the room is
-  deep); the smallest text on any slide (captions, footers, source lines) is ≥ 12pt — the QA
-  script enforces this floor. Dense appendix slides may drop to 14pt.
+- Body 18–20pt on a 13.33×7.5" canvas (larger for deep rooms); diagram/table labels 14–16pt;
+  captions, footers and source lines ≥12pt. Use the shared grid to fit substantive content,
+  rather than shrinking fonts or stretching a few sentences across empty containers.
 
-## Visual system (applies to every scenario theme)
+## Visual system
 
-Flat all-white decks with one blue and one orange read as "AI-generated". Every Lyceum
-theme is a five-layer system — use all five layers or the deck collapses back to flat:
+Default to **学术蓝白** in [`references/academic-blue.md`](references/academic-blue.md):
+white background, deep-blue academic header, dark body text, thin boundaries and purposeful
+stage colors. No mandatory shadows, floating cards, dark covers or giant-number panels.
 
-1. **Paper background** — content pages sit on a tinted paper tone (`BG`, near-white with a
-   warm/cool cast from the theme), NEVER raw `FFFFFF`. The paper is the quiet layer that makes
-   everything else look chosen.
-2. **Cards on paper** — content lives in white `SURFACE` cards (rounded 0.05–0.08", subtle
-   shadow: theme ink at ~10% opacity, blur 7, offset 2, angle 90) floating on the paper.
-   Cards group real content; they are not decoration.
-3. **Ink ramp** — the theme's `INK → P_MID → P_SOFT` stepped ramp structures titles, table
-   headers, panels, and CHART_RAMP bar sequences. Charts take 3–4 ramp steps (winner darkest
-   or ACCENT) — never single-color rows, never rainbows.
-4. **One accent** — `ACCENT` marks exactly one element per page: the hero number, the winning
-   bar, the innovation marker. Two accent uses on one page means one must go.
-5. **Dark sandwich** — cover (and chapter/section dividers where the scenario defines them)
-   invert to the theme's INK background with warm-white type; content pages stay paper-light.
-   The contrast between the two registers is the deck's visual signature.
+Use figures to explain structure: technical routes, method architectures, comparisons,
+experimental evidence and failure analysis. Most content pages should have a substantive
+figure plus interpretation; cover, agenda, references and discussion pages can be exceptions.
+Choose a horizontal route, a left-process/right-explanation page, or an evidence-to-question
+composition when it matches the argument. Do not repeat one card grid across every page.
 
-Also: every chart truncates honestly (annotate a non-zero axis origin), value labels keep the
-precision the claim needs (`55.9` not `56` when the title says 55.9%), and dark-theme variants
-drop shadows in favor of 1px borders (shadows vanish on dark backgrounds).
+The six scenario references retain named legacy themes as explicit opt-ins. Their palettes
+do not override the default shared style. Even in a legacy theme, content density and figure
+planning still follow the shared contract unless the user requests a sparse presentation.
+
+Chart scales must be honest; annotate a non-zero origin and keep the precision the claim
+needs. Colors encode named stages or series consistently; multiple stage colors are allowed.
 
 ## Technical execution
 
@@ -165,12 +163,17 @@ modes of pptxgenjs/python-pptx):
   never type "•" characters; use `paraSpaceAfter`, not `lineSpacing`.
 - Never reuse option objects across add* calls (pptxgenjs mutates them) — use factory functions.
 - Stacked bars: `dataLabelPosition` only `"ctr"/"inEnd"/"inBase"`; `outEnd` is clustered-only.
-- Title/closing/chapter-divider slides use the theme's dark INK background with warm-white
-  type; content pages stay on the paper BG (the "Visual system" sandwich) — never flat white.
+- Default title/closing/content slides use white BG with blue headers; use dark covers only
+  when the selected theme or user reference calls for them.
 - Every chart: axis titles + units, direct value labels with claim-level precision
   (`dataLabelFormatCode`), muted gridlines only where they help, `chartColors` from the theme's
   CHART_RAMP, no 3D, no legend when a single series.
 - Diagrams: snap to a 0.1" mental grid; connectors touch shape edges; no orphan arrows.
+- PptxGenJS line extents must stay nonnegative: use absolute width/height and `flipH`/`flipV`
+  for reversed endpoints. Tables use `valign: "middle"`, not text-box `"mid"`.
+- For PptxGenJS 4.0.1 rich-text output, run `scripts/normalize_pptx.py` on the generated file
+  before QA. It removes identical duplicate paragraph properties while preserving native
+  runs and figures; conflicting properties fail rather than silently change formatting.
 - Speaker notes on data/chart slides carry the underlying numbers (Iron law 1.5).
 
 If the host provides the `presentations:pptx` skill, its Part 2 (pptxgenjs in depth) and editing
@@ -197,10 +200,12 @@ Two modes beyond fresh generation:
    text-overflow estimation (CJK/Latin width-aware), shapes off-canvas, text-frame overlaps,
    leftover placeholders (`TODO`, `xxx`, `lorem`, `【待补充` in deliverable mode), runs missing
    explicit fonts, and an editability audit (ratio of text-in-images vs native text). Fix every
-   ERROR; review each WARNING. Exit code 0 = clean.
+   ERROR; review each WARNING. Exit code 0 = clean. Add `--academic` to report native exhibits,
+   diagram candidates and sparse-page warnings; these heuristics do not establish figure quality.
 2. **Visual** — render once (`soffice --headless --convert-to pdf` → `pdftoppm -png -r 150`) and
    inspect: consistent margins, palette discipline, chart legibility, no clipped text. Use the
-   host's visual-judge subagent if available.
+   host's visual tools. Check figure labels at presentation size, arrow meaning, explanation
+   density and unsupported claims as well as geometry.
 3. **Ghost deck test** — read the 12–20 action titles aloud in order; if they don't tell the
    story, the outline (not the styling) is broken; fix titles first.
 

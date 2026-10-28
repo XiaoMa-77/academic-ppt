@@ -5,6 +5,31 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] - 2026-10-28
+
+### Changed
+
+- Rename the repository to **Academic PPT** (`academic-ppt`); retain the `lyceum` skill entrypoint.
+- Default all six scenarios to an academic white/blue visual system. Keep 18 legacy themes opt-in.
+- Replace the strict single-claim/eight-line rules with research-task planning, substantive figure
+  selection and related evidence/interpretation on the same page.
+- Rebuild the nine-slide example with research-question derivation, a three-row research map,
+  horizontal technical route, editable method architecture, native results, diagnostic curves,
+  and a schedule. Refresh all nine PowerPoint-rendered previews.
+- Remove unsupported significance, citation and repetition claims from the fictional example.
+- Require visual inspection as well as programmatic QA.
+
+### Added
+
+- `references/academic-blue.md`: shared palette, grid, density guidance and three reference compositions.
+- Optional `qa_check.py --academic` metrics and sparse/exhibit hints.
+- Checks for negative DrawingML extents, duplicate paragraph properties and invalid table anchors.
+- A normalization pass for identical duplicate paragraph properties from PptxGenJS 4.0.1.
+- A read-only PowerPoint render script that fails on open/export errors.
+- Thirteen regression checks covering density, native exhibits, XML compatibility and the original fixture.
+- Locked Node dependencies, Python QA requirements and a GitHub Actions build/test workflow.
+
+
 ## [1.0.0] - 2026-10-26
 
 ### Added
@@ -40,4 +65,6 @@ v1 used a flat-white background with a single blue/orange pair; feedback called 
 backgrounds, white content cards with subtle shadows, stepped ink ramps for structure and
 charts, one accent per page, dark ink covers, and split-run CJK/Latin typography.
 
-[1.0.0]: https://github.com/XiaoMa-77/lyceum/releases/tag/v1.0.0
+[1.0.0]: https://github.com/XiaoMa-77/academic-ppt/releases/tag/v1.0.0
+
+[1.1.0]: https://github.com/XiaoMa-77/academic-ppt/compare/v1.0.0...main

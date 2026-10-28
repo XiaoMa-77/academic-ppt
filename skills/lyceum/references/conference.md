@@ -1,5 +1,7 @@
 # Scenario · 学术会议报告 (Conference Talk)
 
+> **Default visual style:** read [academic-blue.md](academic-blue.md). Use this file for scenario structure and research content. The named palettes, cover treatments and card layouts below are optional legacy themes; they do not override the shared white/blue style or its figure and density guidance.
+
 An oral or spotlight presentation at a peer-reviewed venue (NeurIPS / CVPR / ACM / IEEE…).
 The audience is 50–500 domain-adjacent researchers who do NOT know your prior group meetings;
 the clock is brutal (12–15 min + 3 min Q&A); the projector is often dim and the room deep.
@@ -33,7 +35,7 @@ venue; code-switch ONLY if the user asks.
 | 12 | Q&A/致谢 | 1 | "Thanks! Questions?" + 联系方式/二维码/代码链接 |
 | 13 | 备用页 | 2–5 | 更全的实验、证明、失败案例 — Q&A 被问到再翻（放在结论后） |
 
-## Design tokens — theme "藏青金" (default)
+## Design tokens — theme "藏青金" (optional legacy theme)
 
 Cold-paper content pages, white exhibit cards, a deep navy cover with matte gold — the
 "journal cover" reading that suits an international venue. Five layers, one accent.

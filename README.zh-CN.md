@@ -24,13 +24,32 @@
 
 | 分组 | 主题（中文 / English） |
 |---|---|
-| 兜底 | 学术蓝白 / Academic Blue |
-| 组会 | 研纸墨蓝 / Ink Paper · 暖砂陶 / Warm Sand · 夜航实验室 / Midnight Lab（深色） |
-| 会议 | 藏青金 / Navy & Gold · 林壑墨绿 / Forest Sage · 讲坛酒红 / Burgundy Lecture |
-| 进展 | 卷宗红 / Dossier Vermilion · 党建正红 / Crimson Dossier · 石板青 / Slate Contract |
-| 答辩 | 学院蓝 / Academy Blue · 学院红金 / Classic Crimson · 石板牛津 / Slate Oxford |
-| 开题 | 蓝图青 / Blueprint Teal · 青苗计划 / Sage Plan · 石墨工程 / Graphite |
-| 文献分享 | 纸边笔记 / Paper Margin · 暖页批注 / Warm Margin · 冷阅审稿 / Cool Review |
+| 兜底 | [学术蓝白 / Academic Blue](examples/theme-preview/theme-01.png) |
+| 组会 | [研纸墨蓝 / Ink Paper](examples/theme-preview/theme-02.png) · [暖砂陶 / Warm Sand](examples/theme-preview/theme-03.png) · [夜航实验室 / Midnight Lab（深色）](examples/theme-preview/theme-04.png) |
+| 会议 | [藏青金 / Navy & Gold](examples/theme-preview/theme-05.png) · [林壑墨绿 / Forest Sage](examples/theme-preview/theme-06.png) · [讲坛酒红 / Burgundy Lecture](examples/theme-preview/theme-07.png) |
+| 进展 | [卷宗红 / Dossier Vermilion](examples/theme-preview/theme-08.png) · [党建正红 / Crimson Dossier](examples/theme-preview/theme-09.png) · [石板青 / Slate Contract](examples/theme-preview/theme-10.png) |
+| 答辩 | [学院蓝 / Academy Blue](examples/theme-preview/theme-11.png) · [学院红金 / Classic Crimson](examples/theme-preview/theme-12.png) · [石板牛津 / Slate Oxford](examples/theme-preview/theme-13.png) |
+| 开题 | [蓝图青 / Blueprint Teal](examples/theme-preview/theme-14.png) · [青苗计划 / Sage Plan](examples/theme-preview/theme-15.png) · [石墨工程 / Graphite](examples/theme-preview/theme-16.png) |
+| 文献分享 | [纸边笔记 / Paper Margin](examples/theme-preview/theme-17.png) · [暖页批注 / Warm Margin](examples/theme-preview/theme-18.png) · [冷阅审稿 / Cool Review](examples/theme-preview/theme-19.png) |
+
+### 主题预览（每套一页，点开看大图）
+
+**上表里每个主题名都是链接，直接指向对应效果图。** 19 页使用同一篇论文内容（Yu et al.,
+*Accelerating Multi-Agent Planning Using Graph Transformers with Bounded Suboptimality*, ICRA 2023；
+数值取自原文 Fig. 4 / Fig. 5），只有配色、卡片、封面和标志性图形不同。
+
+|  |  |  |
+|---|---|---|
+| **01 学术蓝白**<br><a href="examples/theme-preview/theme-01.png"><img src="examples/theme-preview/theme-01.png" width="270" alt="01 学术蓝白"></a> | **02 研纸墨蓝**<br><a href="examples/theme-preview/theme-02.png"><img src="examples/theme-preview/theme-02.png" width="270" alt="02 研纸墨蓝"></a> | **03 暖砂陶**<br><a href="examples/theme-preview/theme-03.png"><img src="examples/theme-preview/theme-03.png" width="270" alt="03 暖砂陶"></a> |
+| **04 夜航实验室**<br><a href="examples/theme-preview/theme-04.png"><img src="examples/theme-preview/theme-04.png" width="270" alt="04 夜航实验室"></a> | **05 藏青金**<br><a href="examples/theme-preview/theme-05.png"><img src="examples/theme-preview/theme-05.png" width="270" alt="05 藏青金"></a> | **06 林壑墨绿**<br><a href="examples/theme-preview/theme-06.png"><img src="examples/theme-preview/theme-06.png" width="270" alt="06 林壑墨绿"></a> |
+| **07 讲坛酒红**<br><a href="examples/theme-preview/theme-07.png"><img src="examples/theme-preview/theme-07.png" width="270" alt="07 讲坛酒红"></a> | **08 卷宗红**<br><a href="examples/theme-preview/theme-08.png"><img src="examples/theme-preview/theme-08.png" width="270" alt="08 卷宗红"></a> | **09 党建正红**<br><a href="examples/theme-preview/theme-09.png"><img src="examples/theme-preview/theme-09.png" width="270" alt="09 党建正红"></a> |
+| **10 石板青**<br><a href="examples/theme-preview/theme-10.png"><img src="examples/theme-preview/theme-10.png" width="270" alt="10 石板青"></a> | **11 学院蓝**<br><a href="examples/theme-preview/theme-11.png"><img src="examples/theme-preview/theme-11.png" width="270" alt="11 学院蓝"></a> | **12 学院红金**<br><a href="examples/theme-preview/theme-12.png"><img src="examples/theme-preview/theme-12.png" width="270" alt="12 学院红金"></a> |
+| **13 石板牛津**<br><a href="examples/theme-preview/theme-13.png"><img src="examples/theme-preview/theme-13.png" width="270" alt="13 石板牛津"></a> | **14 蓝图青**<br><a href="examples/theme-preview/theme-14.png"><img src="examples/theme-preview/theme-14.png" width="270" alt="14 蓝图青"></a> | **15 青苗计划**<br><a href="examples/theme-preview/theme-15.png"><img src="examples/theme-preview/theme-15.png" width="270" alt="15 青苗计划"></a> |
+| **16 石墨工程**<br><a href="examples/theme-preview/theme-16.png"><img src="examples/theme-preview/theme-16.png" width="270" alt="16 石墨工程"></a> | **17 纸边笔记**<br><a href="examples/theme-preview/theme-17.png"><img src="examples/theme-preview/theme-17.png" width="270" alt="17 纸边笔记"></a> | **18 暖页批注**<br><a href="examples/theme-preview/theme-18.png"><img src="examples/theme-preview/theme-18.png" width="270" alt="18 暖页批注"></a> |
+| **19 冷阅审稿**<br><a href="examples/theme-preview/theme-19.png"><img src="examples/theme-preview/theme-19.png" width="270" alt="19 冷阅审稿"></a> |  |  |
+
+[19 套带名称的拼版总览图](examples/theme-preview/theme-overview.png) ·
+[完整色值与提示词模板](skills/lyceum/references/theme-index.md)
 
 ### 到底怎么用（重点）
 
@@ -94,6 +113,15 @@
 
 场景参考决定论证结构；视觉主题从 [`theme-index.md`](skills/lyceum/references/theme-index.md) 里选；`academic-blue.md` 提供所有主题共享的网格、字体与密度规范。
 场景**不锁定配色**：每个场景文件附带的 3 套主题只是推荐分组，可跨场景取用。用户提供的院校模板和参考图优先。
+### 场景骨架预览（配色相同，结构不同）
+
+这 6 页全部使用默认学术蓝白配色，只换页面骨架与论证顺序。
+[6 页拼版总览图](examples/theme-preview/scenario-overview.png)。
+
+|  |  |  |
+|---|---|---|
+| **1 组会汇报**<br><a href="examples/theme-preview/scenario-1.png"><img src="examples/theme-preview/scenario-1.png" width="270" alt="1 组会汇报"></a> | **2 学术会议报告**<br><a href="examples/theme-preview/scenario-2.png"><img src="examples/theme-preview/scenario-2.png" width="270" alt="2 学术会议报告"></a> | **3 科研进展**<br><a href="examples/theme-preview/scenario-3.png"><img src="examples/theme-preview/scenario-3.png" width="270" alt="3 科研进展"></a> |
+| **4 学位答辩**<br><a href="examples/theme-preview/scenario-4.png"><img src="examples/theme-preview/scenario-4.png" width="270" alt="4 学位答辩"></a> | **5 开题报告**<br><a href="examples/theme-preview/scenario-5.png"><img src="examples/theme-preview/scenario-5.png" width="270" alt="5 开题报告"></a> | **6 文献分享**<br><a href="examples/theme-preview/scenario-6.png"><img src="examples/theme-preview/scenario-6.png" width="270" alt="6 文献分享"></a> |
 
 ## 安装技能
 
@@ -181,6 +209,7 @@ skills/lyceum/
   scripts/qa_check.py              # 质量检查与密度提示
   scripts/normalize_pptx.py        # 生成文件 XML 兼容处理
   scripts/render_powerpoint.ps1    # Windows 原生渲染验证
+examples/theme-preview/            # 19 套主题 + 6 种场景效果图与拼版总览
 examples/group-meeting-demo/       # 9 页示例、脚本和全部预览
 examples/qa-selftest/              # 缺陷样例与回归检查
 .github/workflows/quality.yml      # 自动构建与测试

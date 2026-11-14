@@ -28,13 +28,33 @@ Any theme can be combined with any scenario skeleton (e.g. an 开题 skeleton in
 
 | Group | Theme names (中文 / English) |
 |---|---|
-| Default fallback | 学术蓝白 / Academic Blue |
-| 组会 Group meeting | 研纸墨蓝 / Ink Paper · 暖砂陶 / Warm Sand · 夜航实验室 / Midnight Lab (dark) |
-| 会议 Conference | 藏青金 / Navy & Gold · 林壑墨绿 / Forest Sage · 讲坛酒红 / Burgundy Lecture |
-| 进展 Progress | 卷宗红 / Dossier Vermilion · 党建正红 / Crimson Dossier · 石板青 / Slate Contract |
-| 答辩 Defense | 学院蓝 / Academy Blue · 学院红金 / Classic Crimson · 石板牛津 / Slate Oxford |
-| 开题 Proposal | 蓝图青 / Blueprint Teal · 青苗计划 / Sage Plan · 石墨工程 / Graphite |
-| 文献分享 Journal Club | 纸边笔记 / Paper Margin · 暖页批注 / Warm Margin · 冷阅审稿 / Cool Review |
+| Default fallback | [学术蓝白 / Academic Blue](examples/theme-preview/theme-01.png) |
+| 组会 Group meeting | [研纸墨蓝 / Ink Paper](examples/theme-preview/theme-02.png) · [暖砂陶 / Warm Sand](examples/theme-preview/theme-03.png) · [夜航实验室 / Midnight Lab (dark)](examples/theme-preview/theme-04.png) |
+| 会议 Conference | [藏青金 / Navy & Gold](examples/theme-preview/theme-05.png) · [林壑墨绿 / Forest Sage](examples/theme-preview/theme-06.png) · [讲坛酒红 / Burgundy Lecture](examples/theme-preview/theme-07.png) |
+| 进展 Progress | [卷宗红 / Dossier Vermilion](examples/theme-preview/theme-08.png) · [党建正红 / Crimson Dossier](examples/theme-preview/theme-09.png) · [石板青 / Slate Contract](examples/theme-preview/theme-10.png) |
+| 答辩 Defense | [学院蓝 / Academy Blue](examples/theme-preview/theme-11.png) · [学院红金 / Classic Crimson](examples/theme-preview/theme-12.png) · [石板牛津 / Slate Oxford](examples/theme-preview/theme-13.png) |
+| 开题 Proposal | [蓝图青 / Blueprint Teal](examples/theme-preview/theme-14.png) · [青苗计划 / Sage Plan](examples/theme-preview/theme-15.png) · [石墨工程 / Graphite](examples/theme-preview/theme-16.png) |
+| 文献分享 Journal Club | [纸边笔记 / Paper Margin](examples/theme-preview/theme-17.png) · [暖页批注 / Warm Margin](examples/theme-preview/theme-18.png) · [冷阅审稿 / Cool Review](examples/theme-preview/theme-19.png) |
+
+### Theme previews
+
+**Every theme name in the table above is a link to its own preview.** All 19 pages use the same
+paper content (Yu et al., *Accelerating Multi-Agent Planning Using Graph Transformers with Bounded
+Suboptimality*, ICRA 2023; values from Fig. 4 / Fig. 5), so only the design tokens, cards, cover
+and signature motifs differ. Click any thumbnail for the 960×540 render.
+
+|  |  |  |
+|---|---|---|
+| **01 Academic Blue**<br><a href="examples/theme-preview/theme-01.png"><img src="examples/theme-preview/theme-01.png" width="270" alt="01 Academic Blue"></a> | **02 Ink Paper**<br><a href="examples/theme-preview/theme-02.png"><img src="examples/theme-preview/theme-02.png" width="270" alt="02 Ink Paper"></a> | **03 Warm Sand**<br><a href="examples/theme-preview/theme-03.png"><img src="examples/theme-preview/theme-03.png" width="270" alt="03 Warm Sand"></a> |
+| **04 Midnight Lab**<br><a href="examples/theme-preview/theme-04.png"><img src="examples/theme-preview/theme-04.png" width="270" alt="04 Midnight Lab"></a> | **05 Navy & Gold**<br><a href="examples/theme-preview/theme-05.png"><img src="examples/theme-preview/theme-05.png" width="270" alt="05 Navy & Gold"></a> | **06 Forest Sage**<br><a href="examples/theme-preview/theme-06.png"><img src="examples/theme-preview/theme-06.png" width="270" alt="06 Forest Sage"></a> |
+| **07 Burgundy Lecture**<br><a href="examples/theme-preview/theme-07.png"><img src="examples/theme-preview/theme-07.png" width="270" alt="07 Burgundy Lecture"></a> | **08 Dossier Vermilion**<br><a href="examples/theme-preview/theme-08.png"><img src="examples/theme-preview/theme-08.png" width="270" alt="08 Dossier Vermilion"></a> | **09 Crimson Dossier**<br><a href="examples/theme-preview/theme-09.png"><img src="examples/theme-preview/theme-09.png" width="270" alt="09 Crimson Dossier"></a> |
+| **10 Slate Contract**<br><a href="examples/theme-preview/theme-10.png"><img src="examples/theme-preview/theme-10.png" width="270" alt="10 Slate Contract"></a> | **11 Academy Blue**<br><a href="examples/theme-preview/theme-11.png"><img src="examples/theme-preview/theme-11.png" width="270" alt="11 Academy Blue"></a> | **12 Classic Crimson**<br><a href="examples/theme-preview/theme-12.png"><img src="examples/theme-preview/theme-12.png" width="270" alt="12 Classic Crimson"></a> |
+| **13 Slate Oxford**<br><a href="examples/theme-preview/theme-13.png"><img src="examples/theme-preview/theme-13.png" width="270" alt="13 Slate Oxford"></a> | **14 Blueprint Teal**<br><a href="examples/theme-preview/theme-14.png"><img src="examples/theme-preview/theme-14.png" width="270" alt="14 Blueprint Teal"></a> | **15 Sage Plan**<br><a href="examples/theme-preview/theme-15.png"><img src="examples/theme-preview/theme-15.png" width="270" alt="15 Sage Plan"></a> |
+| **16 Graphite**<br><a href="examples/theme-preview/theme-16.png"><img src="examples/theme-preview/theme-16.png" width="270" alt="16 Graphite"></a> | **17 Paper Margin**<br><a href="examples/theme-preview/theme-17.png"><img src="examples/theme-preview/theme-17.png" width="270" alt="17 Paper Margin"></a> | **18 Warm Margin**<br><a href="examples/theme-preview/theme-18.png"><img src="examples/theme-preview/theme-18.png" width="270" alt="18 Warm Margin"></a> |
+| **19 Cool Review**<br><a href="examples/theme-preview/theme-19.png"><img src="examples/theme-preview/theme-19.png" width="270" alt="19 Cool Review"></a> |  |  |
+
+[One-page contact sheet with all 19 names](examples/theme-preview/theme-overview.png) ·
+[Full theme index and tokens](skills/lyceum/references/theme-index.md)
 
 ### How to actually select one
 
@@ -100,6 +120,15 @@ Chart data is embedded in workbooks and recorded in the corresponding slide note
 Read the scenario for research structure, then [`theme-index.md`](skills/lyceum/references/theme-index.md)
 for the visual style, then the shared academic-blue contract for grid/density/figure rules.
 The scenario does **not** force a palette: it only supplies a suggested group of three themes.
+### Scenario previews (same palette, different skeletons)
+
+These six pages all use the default academic-blue palette; only the page skeleton and argument
+order change. [Six-page contact sheet](examples/theme-preview/scenario-overview.png).
+
+|  |  |  |
+|---|---|---|
+| **1 Lab group meeting**<br><a href="examples/theme-preview/scenario-1.png"><img src="examples/theme-preview/scenario-1.png" width="270" alt="1 Lab group meeting"></a> | **2 Conference talk**<br><a href="examples/theme-preview/scenario-2.png"><img src="examples/theme-preview/scenario-2.png" width="270" alt="2 Conference talk"></a> | **3 Progress report**<br><a href="examples/theme-preview/scenario-3.png"><img src="examples/theme-preview/scenario-3.png" width="270" alt="3 Progress report"></a> |
+| **4 Thesis defense**<br><a href="examples/theme-preview/scenario-4.png"><img src="examples/theme-preview/scenario-4.png" width="270" alt="4 Thesis defense"></a> | **5 Research proposal**<br><a href="examples/theme-preview/scenario-5.png"><img src="examples/theme-preview/scenario-5.png" width="270" alt="5 Research proposal"></a> | **6 Paper reading**<br><a href="examples/theme-preview/scenario-6.png"><img src="examples/theme-preview/scenario-6.png" width="270" alt="6 Paper reading"></a> |
 
 ## Install the skill
 
@@ -191,6 +220,7 @@ skills/lyceum/
   scripts/qa_check.py             # Programmatic QA and content hints
   scripts/normalize_pptx.py       # Generated DrawingML compatibility pass
   scripts/render_powerpoint.ps1   # Native Windows open and render check
+examples/theme-preview/           # 19 theme previews + 6 scenario previews + contact sheets
 examples/group-meeting-demo/      # Nine-slide deck, builder, all page previews
 examples/qa-selftest/             # Negative fixture and regressions
 .github/workflows/quality.yml     # Build and test automation

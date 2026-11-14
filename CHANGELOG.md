@@ -12,6 +12,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `skills/lyceum/references/theme-index.md`: single index for all 19 visual themes — full design
   tokens, signature motifs, priority rules, copy-paste prompt templates, cross-scenario
   combinations, and an acceptance checklist for verifying a deck did not silently default.
+- `examples/theme-preview/`: 19 one-page theme renders, 6 scenario-skeleton renders and two
+  named contact sheets. Both READMEs now embed a labelled thumbnail grid, so every theme name in
+  the table links directly to its own preview.
 - Both READMEs now open with "scenario + visual style" and document how to select a theme.
 
 ### Changed

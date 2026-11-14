@@ -106,6 +106,83 @@ fictional demonstrations**, labeled in slide footers and notes.
 Text, diagram nodes, connectors, charts, and tables remain native PowerPoint objects.
 Chart data is embedded in workbooks and recorded in the corresponding slide notes.
 
+## How to get the layouts shown above
+
+> **A theme changes colors only. Layouts are a separate choice.**
+> The 19 theme previews deliberately use one identical page so the palettes can be compared —
+> that is a controlled comparison, not the range of layouts the skill can build. A real deck has
+> different compositions on different pages: see the six-cell example grid above, the nine-slide
+> [`group-meeting-demo`](examples/group-meeting-demo/) deck, or the scenario preview grid below.
+
+| Layer | What it controls | How to request it |
+|---|---|---|
+| Scenario skeleton | Page order, the research task of each page, talk length | Name the genre: 组会 / 会议 / 进展 / 答辩 / 开题 / 文献分享 |
+| Page composition | Which figure explains that page's claim | Name the composition in the prompt, or let the agent plan it from [`academic-blue.md`](skills/lyceum/references/academic-blue.md) |
+| Theme | Palette, paper, cards, cover, chart ramp, motif colors | Name a theme from the 19-theme table — **this never changes the layout** |
+
+### The six compositions in the example grid
+
+| Composition | Best for | Prompt keywords |
+|---|---|---|
+| Background → research question | Deriving a gap from evidence | `背景页：左侧原文证据/案例，右侧写研究缺口` |
+| Process + explanation | Question / method / output alignment | `左流程右论证，三行逐行对应` |
+| Horizontal technical route | Input → data → method → validation → output | `技术路线用横向流程，下方补阶段说明` |
+| Method architecture | Modules and data flow | `方法页画原生架构图，节点和连线可编辑` |
+| Results and table | Main quantitative comparison | `结果页用原生柱状图 + 表格，本文行加粗高亮` |
+| Curve and diagnosis | Failure analysis, diagnostic reasoning | `曲线 + 现象→已排除→当前假设→求助点` |
+
+### What six different layouts look like
+
+The 19 theme previews above hold **one layout constant** to compare palettes. The two grids below
+hold **one real 19-page lab-meeting deck** (`StreamVLN`) and show six different compositions in it —
+background → question, process + explanation, technical route, method architecture, results and
+table, curve and diagnosis. Only the palette changes between the two grids; the six layouts are
+identical. This is what "theme changes colors, prompts change layouts" means in practice.
+
+| 01 学术蓝白 / Academic Blue | 04 夜航实验室 / Midnight Lab (dark) |
+|---|---|
+| <a href="examples/theme-preview/grids/grid-01.png"><img src="examples/theme-preview/grids/grid-01.png" width="420" alt="Academic Blue, six layouts"></a> | <a href="examples/theme-preview/grids/grid-04.png"><img src="examples/theme-preview/grids/grid-04.png" width="420" alt="Midnight Lab, six layouts"></a> |
+
+[All 19 six-layout grids](examples/theme-preview/grids/) · [Single contact sheet of all 19](examples/theme-preview/grids/grids-overview.png)
+
+### Copy-paste prompt: six different layouts + one named theme
+
+```text
+Use Lyceum to build a 12-page lab group meeting deck, visual theme "研纸墨蓝".
+Follow the group-meeting page order. Each page completes one research task and carries one
+substantive figure plus a one-line judgment:
+- Background page: original-paper evidence on the left, resulting gap on the right
+- Research logic page: left-hand process / right-hand explanation, three aligned rows
+- Technical route page: horizontal flow (input -> data -> method -> validation -> output) with stage notes
+- Method page: native editable architecture diagram with modules and connectors
+- Main results page: native bar chart + real table, highlight our row
+- Diagnosis page: curve plus 现象 -> 已排除 -> 当前假设 -> 求助点
+Do not repeat one card grid on every page. Do not invent missing results.
+```
+
+### Let the scenario skeleton drive the layouts
+
+```text
+Use Lyceum to build a thesis defense deck. Use the defense skeleton to mix layouts automatically:
+a three-layer research framework on the overview page, an innovation-marker list, mirrored
+problem -> method -> validation pages for each study, and charts + tables on result pages.
+Visual theme "学院蓝".
+```
+
+Each of the six scenario references defines its own page order — the six cells in the
+"Scenario previews" grid show those skeletons with the palette held constant.
+
+### Common mistakes
+
+- Naming only a theme (`用藏青金`) → colors change, layouts do not.
+- `make it richer / look more designed` → no concrete composition, so nothing changes.
+- Reusing one card grid on every page → violates the shared contract in `academic-blue.md`.
+- Expecting `theme-index.md` to control layout → it only lists palettes and prompt templates.
+
+**Acceptance check:** flip through the finished deck and look for at least four distinct page
+compositions, one substantive figure plus interpretation per content page, and native editable
+charts/tables. If every page looks the same, the prompt did not specify layouts.
+
 ## Six academic scenarios
 
 | Scenario | Typical talk | Playbook |
@@ -220,7 +297,8 @@ skills/lyceum/
   scripts/qa_check.py             # Programmatic QA and content hints
   scripts/normalize_pptx.py       # Generated DrawingML compatibility pass
   scripts/render_powerpoint.ps1   # Native Windows open and render check
-examples/theme-preview/           # 19 theme previews + 6 scenario previews + contact sheets
+examples/theme-preview/           # 19 theme + 6 scenario previews, contact sheets
+examples/theme-preview/grids/     # 19 six-layout grids from a real 19-page deck
 examples/group-meeting-demo/      # Nine-slide deck, builder, all page previews
 examples/qa-selftest/             # Negative fixture and regressions
 .github/workflows/quality.yml     # Build and test automation

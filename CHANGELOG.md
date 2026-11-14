@@ -16,6 +16,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   named contact sheets. Both READMEs now embed a labelled thumbnail grid, so every theme name in
   the table links directly to its own preview.
 - Both READMEs now open with "scenario + visual style" and document how to select a theme.
+- Add a "How to get the layouts shown above" chapter to both READMEs: theme changes colors only;
+  six named page compositions, copy-paste prompts, scenario-driven layouts, common mistakes and an
+  acceptance check. Clarifies why the 19 palette previews all share one page.
+- Add `examples/theme-preview/grids/`: 19 six-layout grids rendered from a real 19-page lab-meeting
+  deck (only design tokens recolored), plus a contact sheet. Two grids are embedded in the new
+  README chapter to show that layouts vary inside one theme.
 
 ### Changed
 

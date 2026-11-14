@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Added
+
+- `skills/lyceum/references/theme-index.md`: single index for all 19 visual themes — full design
+  tokens, signature motifs, priority rules, copy-paste prompt templates, cross-scenario
+  combinations, and an acceptance checklist for verifying a deck did not silently default.
+- Both READMEs now open with "scenario + visual style" and document how to select a theme.
+
+### Changed
+
+- Academic blue is now an explicit **fallback**, not an imposed default. When a new-deck request
+  does not name a theme, the agent asks once which style to use; vague adjectives are not treated
+  as a theme name. All 19 named themes are first-class options.
+- `SKILL.md` Step 1 resolves the visual style before any slide is built; the academic-blue
+  reference now governs only the shared grid/density/figure contract, not the palette.
+
 ## [1.1.0] - 2026-10-28
 
 ### Changed

@@ -13,10 +13,11 @@ group meeting and a thesis defense are different genres, not one style with diff
 
 ## Step 1 · Route to a scenario system
 
-Read the matching scenario reference for the page skeleton and research argument, then read
-[`references/academic-blue.md`](references/academic-blue.md) for the default visual and density
-contract. Its white/blue system overrides legacy theme tokens unless the user selects a named
-legacy theme. User-supplied references and institutional templates take precedence over both.
+Read the matching scenario reference for the page skeleton and research argument. **Before any
+slide is built, resolve the visual style** in
+[`references/theme-index.md`](references/theme-index.md) (19 named themes + full tokens).
+Then read [`references/academic-blue.md`](references/academic-blue.md) for the shared grid,
+density, font and figure contract — not as a mandatory palette.
 
 | Scenario | Trigger phrases | Typical talk | Pages | Reference |
 |---|---|---|---|---|
@@ -27,16 +28,30 @@ legacy theme. User-supplied references and institutional templates take preceden
 | 开题报告 Research proposal | 开题 / proposal / 研究计划 / 开题答辩 | 10–20 min | 15–25 | `references/proposal.md` |
 | 文献分享 Paper reading | 文献分享 / journal club / 论文精读 / paper reading | 20–45 min | 12–25 | `references/paper-reading.md` |
 
+Visual-style routing (apply on every create / restyle request, before generating):
+
+| User input | Action |
+|---|---|
+| Names a theme (中文名 or English name in `theme-index.md`) | Use that theme's tokens for **every page**; never fall back to academic blue |
+| Supplies a school template, reference image, logo or brand colors | Those win; keep the scenario skeleton, swap tokens |
+| Says 默认 / 学术蓝白 / 不用选 / 随便 | Use academic blue |
+| Says nothing about visuals | **Do not silently default.** Ask ONE short question offering the style groups (or 2–3 concrete themes for the inferred scenario), with 默认学术蓝白 as one option |
+
+Scenario and theme are independent: a named theme's tokens may be used with any scenario skeleton
+("开题骨架 + 藏青金配色"). State the chosen theme in the delivery note so it can be checked.
+
 Routing rules:
 
 - Ambiguous input ("帮我做个汇报") → ask ONE short question listing the scenarios, or infer from
   context clues (mention of 导师/师兄 → group meeting; 评委/答辩委员会 → defense; 项目号/任务书 → progress).
+  Resolve visual style in the same question when practical; do not ask twice.
 - Mixed signals (defense that includes a progress chapter) → route by the DOMINANT genre; borrow
   the chapter skeleton from the secondary reference.
+- Vague adjectives ("好看一点", "正式一点", "蓝色系") are NOT a theme name → ask which named theme.
 - Custom requirements (school colors, 院系模板, logo) → keep the scenario skeleton, swap design
-  tokens as instructed in the reference's "Theme variants" section.
+  tokens as instructed in `theme-index.md`.
 - If the user supplies an existing .pptx to edit or restyle → read "Editing & restyling" below in
-  addition to the scenario reference.
+  addition to the scenario reference and `theme-index.md`.
 
 ## Iron law 1 · Natively editable, always
 
@@ -132,9 +147,12 @@ Pyramid Principle, Weiss's assertion-evidence talking) adapted for research talk
 
 ## Visual system
 
-Default to **学术蓝白** in [`references/academic-blue.md`](references/academic-blue.md):
-white background, deep-blue academic header, dark body text, thin boundaries and purposeful
-stage colors. No mandatory shadows, floating cards, dark covers or giant-number panels.
+Academic blue is the **fallback**, not the answer to every request. Resolve the visual style in
+Step 1 using [`references/theme-index.md`](references/theme-index.md) before writing any slide.
+When a named theme is selected, its tokens (paper background, card fills, cover, accent, chart
+ramp, signature motif) govern all pages; [`references/academic-blue.md`](references/academic-blue.md)
+then supplies the shared grid, density, font and figure contract only. Its white-background /
+deep-blue-header palette applies only when academic blue is the selected style.
 
 Use figures to explain structure: technical routes, method architectures, comparisons,
 experimental evidence and failure analysis. Most content pages should have a substantive
@@ -142,9 +160,11 @@ figure plus interpretation; cover, agenda, references and discussion pages can b
 Choose a horizontal route, a left-process/right-explanation page, or an evidence-to-question
 composition when it matches the argument. Do not repeat one card grid across every page.
 
-The six scenario references retain named legacy themes as explicit opt-ins. Their palettes
-do not override the default shared style. Even in a legacy theme, content density and figure
-planning still follow the shared contract unless the user requests a sparse presentation.
+All 19 named themes in `theme-index.md` are first-class options; "legacy" describes their origin,
+not a deprecation. Once selected, their palettes and signature motifs MUST be applied consistently
+across cover, cards, tables, charts and footers. Content density, figure planning, honest chart
+scales and the editability contract still follow the shared rules unless the user requests a
+sparse presentation. See the acceptance checklist at the end of `theme-index.md`.
 
 Chart scales must be honest; annotate a non-zero origin and keep the precision the claim
 needs. Colors encode named stages or series consistently; multiple stage colors are allowed.

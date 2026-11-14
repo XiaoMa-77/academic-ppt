@@ -10,10 +10,49 @@
 
 </div>
 
-## 默认风格：学术蓝白
+## 先选两件事：场景 + 视觉主题
 
-默认采用白底、深蓝标题、深色正文、细描边与阶段配色。每页围绕一个研究任务，
-把问题、方法、证据和解读组织在一起。保留六套学术场景的内容方法，旧配色主题可显式选择。
+一份 PPT 由两个**互相独立**的选择决定：
+
+- **场景（6 种）**：决定页数、页面骨架、论证顺序、时长、标志性图形 —— 组会 / 会议 / 进展 / 答辩 / 开题 / 文献分享。
+- **视觉主题（19 套）**：决定纸张底色、卡片、封面、主色阶梯、强调色、图表色阶 —— 完整色值、选择规则和提示词模板见 [**`theme-index.md`**](skills/lyceum/references/theme-index.md)。
+
+**学术蓝白只是 19 套里的一套，也是兜底方案，不是全部。** 请求里没写主题时，技能应先问一次用哪套风格，而不是直接默认成学术蓝白。
+主题可以跨场景组合，例如「开题骨架 + 藏青金配色」：保留 `proposal.md` 的页面结构，只取 `conference.md` 的色值。
+
+### 19 套主题一览
+
+| 分组 | 主题（中文 / English） |
+|---|---|
+| 兜底 | 学术蓝白 / Academic Blue |
+| 组会 | 研纸墨蓝 / Ink Paper · 暖砂陶 / Warm Sand · 夜航实验室 / Midnight Lab（深色） |
+| 会议 | 藏青金 / Navy & Gold · 林壑墨绿 / Forest Sage · 讲坛酒红 / Burgundy Lecture |
+| 进展 | 卷宗红 / Dossier Vermilion · 党建正红 / Crimson Dossier · 石板青 / Slate Contract |
+| 答辩 | 学院蓝 / Academy Blue · 学院红金 / Classic Crimson · 石板牛津 / Slate Oxford |
+| 开题 | 蓝图青 / Blueprint Teal · 青苗计划 / Sage Plan · 石墨工程 / Graphite |
+| 文献分享 | 纸边笔记 / Paper Margin · 暖页批注 / Warm Margin · 冷阅审稿 / Cool Review |
+
+### 到底怎么用（重点）
+
+**在请求里写出主题名**，点名后整套生效，不得回落到学术蓝白：
+
+```text
+用 Lyceum 做一份 18 页的学位答辩 PPT，视觉主题用「学院红金」。
+保留答辩场景的页面骨架和创新点方块，封面、卡片、表格、图表色阶、页脚统一用该主题配色。
+不要回落到学术蓝白。问题、方法细节和解释性图示放在同一页；缺失结果保持缺失。
+```
+
+优先级从高到低：
+
+1. 用户提供的**院校模板 / 参考图 / 校徽 / 品牌色** → 保留场景骨架，替换色值。
+2. **明确点名的主题**（中文名或英文名）→ 整套 deck 统一使用，不回落。
+3. 用户说「默认 / 学术蓝白 / 不用选 / 随便」→ 才用学术蓝白。
+4. 以上都没有 → **不要静默默认，先问一次**：给出风格分组（或按已判定的场景给 2–3 个具体主题名），并把「默认学术蓝白」作为其中一个选项。
+
+「做得好看一点」「正式一点」「用蓝色系」都**不算点名**，因为没有对应到具体主题名，应追问是学术蓝白、研纸墨蓝还是学院蓝。
+跨场景组合、给已有 PPT 换风格、院校模板覆盖、以及「怎么确认没有偷偷回到默认」的验收清单，全部写在 `theme-index.md` 第 7、8 节。
+
+### 共享的版式与密度规范（19 套主题都遵守）
 
 - **横向技术路线**：问题 → 数据准备 → 模型/方法 → 验证 → 输出，下方补阶段说明。
 - **左流程、右论证**：科学问题、研究方法、阶段产物逐行对应。
@@ -23,12 +62,11 @@
 正文按区域组织，常规内容页可从约 120–260 个汉字加图表起步，按报告时长调整。
 相关子结论可以同页呈现，不再因“两条结论”或“超过八行”机械拆页。
 图示需要解释机制或证据；不会为了填满页面补造实验。
-
-完整规范：[`academic-blue.md`](skills/lyceum/references/academic-blue.md)。
+网格、字体、密度与图示规则见 [`academic-blue.md`](skills/lyceum/references/academic-blue.md) —— 换主题时这些规则不变，只有配色变。
 
 ## 9 页可编辑示例
 
-主题：小样本分类与对比学习。**所有研究数据和曲线均为虚构演示**，页脚和备注均有标识。
+示例题目：小样本分类与对比学习（视觉用的是默认学术蓝白）。**所有研究数据和曲线均为虚构演示**，页脚和备注均有标识。
 
 | 背景 → 科学问题 | 左流程、右论证 | 横向技术路线 |
 |---|---|---|
@@ -54,8 +92,8 @@
 | 开题报告 | 10–20 分钟 | [proposal.md](skills/lyceum/references/proposal.md) |
 | 文献分享 / Journal Club | 20–45 分钟 | [paper-reading.md](skills/lyceum/references/paper-reading.md) |
 
-场景参考决定论证结构，学术蓝白规范决定默认视觉与密度。用户提供的院校模板和参考图优先。
-原有 18 套主题作为可选方案保留；默认无需选择主题即可开始。
+场景参考决定论证结构；视觉主题从 [`theme-index.md`](skills/lyceum/references/theme-index.md) 里选；`academic-blue.md` 提供所有主题共享的网格、字体与密度规范。
+场景**不锁定配色**：每个场景文件附带的 3 套主题只是推荐分组，可跨场景取用。用户提供的院校模板和参考图优先。
 
 ## 安装技能
 
@@ -79,13 +117,15 @@ New-Item -ItemType Directory -Force "$env:USERPROFILE/.agents/skills" | Out-Null
 Copy-Item -Recurse skills/lyceum "$env:USERPROFILE/.agents/skills/"
 ```
 
-对话示例：
+对话示例（这条点名了主题，因此**不会**用学术蓝白）：
 
 ```text
-用 Lyceum 做一份开题汇报，采用学术蓝白风格。
+用 Lyceum 做一份开题汇报，视觉主题用「蓝图青」。
 每页保留研究问题、方法细节和对应图示，技术路线用横向流程，
 研究内容用左流程右说明。根据我给的数据制作结果图，不要补造结果。
 ```
+
+要用兜底风格，请明确写「用默认学术蓝白，不用再问风格」。更多模板（跨场景组合、院校模板、整份换风格、验收清单）见 `theme-index.md`。
 
 ## 构建与测试
 
@@ -135,8 +175,9 @@ Windows 安装 PowerPoint 后：
 ```text
 skills/lyceum/
   SKILL.md                         # 路由、内容方法、原生编辑约束
-  references/academic-blue.md      # 默认视觉、密度与 figure 规范
-  references/                     # 六套场景与可选旧主题
+  references/theme-index.md        # 19 套主题、色值、选择规则、提示词模板、验收清单
+  references/academic-blue.md      # 共享网格/字体/密度/图示规范（兜底配色）
+  references/                     # 六套场景骨架 + 各场景的主题色值
   scripts/qa_check.py              # 质量检查与密度提示
   scripts/normalize_pptx.py        # 生成文件 XML 兼容处理
   scripts/render_powerpoint.ps1    # Windows 原生渲染验证

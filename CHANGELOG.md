@@ -22,6 +22,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add `examples/theme-preview/grids/`: 19 six-layout grids rendered from a real 19-page lab-meeting
   deck (only design tokens recolored), plus a contact sheet. Two grids are embedded in the new
   README chapter to show that layouts vary inside one theme.
+- `DESIGN.md`: background, architecture and module responsibilities, CLI/Python APIs, data flow,
+  boundary and exception scenarios, test strategy, and explicit assumptions / open questions.
+- `scripts/verify.sh` and `scripts/py.js`: one-shot local verification (syntax → tests → build →
+  QA) with a cross-platform `PYTHON` override for npm scripts.
+- `examples/qa-selftest/test_qa_core.py` and `test_qa_cli.py`: 36 offline tests for the QA
+  heuristics, threshold boundaries, CLI exit codes and JSON report shapes. One rendering check is
+  skipped because it requires a real PowerPoint installation.
 
 ### Changed
 
@@ -30,6 +37,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   as a theme name. All 19 named themes are first-class options.
 - `SKILL.md` Step 1 resolves the visual style before any slide is built; the academic-blue
   reference now governs only the shared grid/density/figure contract, not the palette.
+- `package.json` scripts and `build_demo.js` now honour the documented `PYTHON` variable through
+  a small launcher, including values with arguments such as `py -3.12`.
 
 ## [1.1.0] - 2026-10-28
 

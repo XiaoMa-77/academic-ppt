@@ -6,7 +6,7 @@
 
 原名 Lyceum · 吕克昂。保留 `lyceum` 技能入口，已有安装和调用方式兼容。
 
-[English](README.md) · [简体中文](README.zh-CN.md) · [MIT](LICENSE)
+[English](README.md) · [简体中文](README.zh-CN.md) · [设计文档](DESIGN.md) · [MIT](LICENSE)
 
 </div>
 
@@ -126,7 +126,7 @@
 
 ### 6 种不同版式长什么样
 
-上面 19 张主题预览是「**同一版式**换配色」；下面两张是「**同一份 19 页真实组会汇报**（StreamVLN）抽出 6 种不同版式」：
+上面 19 张主题预览是「**同一版式**换配色」；下面两张是「**同一份 19 页真实组会汇报**抽出 6 种不同版式」：
 背景→问题、过程+解释、技术路线、方法架构、结果与表格、曲线与诊断。
 两张图之间只有配色不同，6 种版式完全一致 —— 这就是「主题改颜色、提示词改版式」的实际含义。
 
@@ -233,15 +233,24 @@ Copy-Item -Recurse skills/lyceum "$env:USERPROFILE/.agents/skills/"
 ```bash
 npm ci
 python -m pip install -r requirements-qa.txt
-npm run build
-npm run qa
-npm test
+bash scripts/verify.sh
+```
+
+`verify.sh` 依次执行：Python 语法编译 → `npm test` → `npm run build` → `npm run qa`。
+也可以单独运行各步骤：
+
+```bash
+npm test          # 运行 examples/qa-selftest/ 下的离线单元测试
+npm run build     # 生成示例 PPTX
+npm run qa        # 程序化 QA，附带 --academic 密度与图示提示
 ```
 
 - `build` 生成 9 页示例，自动规范化生成库的重复段落属性，保留中英混排与原生对象。
 - `qa` 检查溢出、越界、文本重叠、占位符、字体、可编辑性和已知 XML 兼容性问题；
   `--academic` 同时输出正文量、图表/表格/图片和流程图候选提示。
-- `test` 运行 13 项回归检查，覆盖密度、原生图示、兼容性修复及原有负向夹具。
+- `test` 自动发现 `examples/qa-selftest/test_*.py`，运行离线回归套件：QA 核心启发式与阈值边界、
+  CLI 退出码与 JSON 报告结构，以及原有负向夹具。其中 1 项渲染检查显式跳过，因为它需要真实
+  PowerPoint；完整测试策略见 [DESIGN.md](DESIGN.md)。
 - GitHub Actions 在推送和 PR 时重建示例、运行 QA 与回归测试，并保存 PPTX 构建产物。
 
 自定义输出位置：
@@ -250,8 +259,9 @@ npm test
 node examples/group-meeting-demo/build_demo.js /path/to/output.pptx
 ```
 
-自定义 Python 可设置环境变量 `PYTHON`，指向已安装 QA 依赖的解释器。
-图像尺寸依赖固定为修复版本，安装由 `package-lock.json` 锁定。
+需要换 Python 解释器时设置环境变量 `PYTHON`，例如
+`PYTHON="py -3.12" bash scripts/verify.sh`。该变量对 `verify.sh`、`npm test`、
+`npm run qa` 和构建脚本均生效。图像尺寸依赖固定为修复版本，安装由 `package-lock.json` 锁定。
 
 ## 渲染与视觉复核
 
@@ -272,6 +282,7 @@ Windows 安装 PowerPoint 后：
 ## 仓库结构
 
 ```text
+DESIGN.md                         # 背景、架构、接口、数据流、边界场景、测试策略与假设
 skills/lyceum/
   SKILL.md                         # 路由、内容方法、原生编辑约束
   references/theme-index.md        # 19 套主题、色值、选择规则、提示词模板、验收清单
@@ -284,6 +295,11 @@ examples/theme-preview/            # 19 套主题 + 6 种场景效果图与拼�
 examples/theme-preview/grids/      # 19 张「同主题 6 版式」真实汇报效果图
 examples/group-meeting-demo/       # 9 页示例、脚本和全部预览
 examples/qa-selftest/              # 缺陷样例与回归检查
+  test_qa.py                       # 密度、原生图示、XML 兼容性
+  test_qa_core.py                  # QA 核心启发式与阈值边界
+  test_qa_cli.py                   # CLI 退出码与 JSON 报告结构
+scripts/verify.sh                  # 本地一键校验
+scripts/py.js                      # 跨平台 Python 启动器（npm 脚本用）
 .github/workflows/quality.yml      # 自动构建与测试
 ```
 

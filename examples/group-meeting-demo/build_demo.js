@@ -332,7 +332,10 @@ note(s, 'appendix', 'Data on slides 6 and 7 are stored in their own notes and na
 const output = path.resolve(process.argv[2] || path.join(__dirname, 'group-meeting-demo.pptx'));
 p.writeFile({ fileName: output }).then(() => {
   // Preserve rich CJK/Latin table runs while fixing the upstream 4.0.1 XML defect.
-  execFileSync(process.env.PYTHON || 'python', [
+  // PYTHON may carry arguments (e.g. "py -3.12"), so split it before execFileSync.
+  const [pythonCommand, ...pythonArgs] = (process.env.PYTHON || 'python').trim().split(/\s+/);
+  execFileSync(pythonCommand, [
+    ...pythonArgs,
     path.resolve(__dirname, '../../skills/lyceum/scripts/normalize_pptx.py'), output,
   ], { stdio: 'inherit' });
   console.log(`written: ${output}`);

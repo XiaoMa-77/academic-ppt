@@ -6,7 +6,7 @@
 
 Formerly Lyceum. The `lyceum` skill name and installation path remain compatible.
 
-[English](README.md) · [简体中文](README.zh-CN.md) · [MIT](LICENSE)
+[English](README.md) · [简体中文](README.zh-CN.md) · [Design](DESIGN.md) · [MIT](LICENSE)
 
 </div>
 
@@ -134,7 +134,7 @@ Chart data is embedded in workbooks and recorded in the corresponding slide note
 ### What six different layouts look like
 
 The 19 theme previews above hold **one layout constant** to compare palettes. The two grids below
-hold **one real 19-page lab-meeting deck** (`StreamVLN`) and show six different compositions in it —
+hold **one real 19-page lab-meeting deck** and show six different compositions in it —
 background → question, process + explanation, technical route, method architecture, results and
 table, curve and diagnosis. Only the palette changes between the two grids; the six layouts are
 identical. This is what "theme changes colors, prompts change layouts" means in practice.
@@ -249,15 +249,25 @@ Requires Node.js 22+ and Python 3.10+. Run from the repository root:
 ```bash
 npm ci
 python -m pip install -r requirements-qa.txt
-npm run build
-npm run qa
-npm test
+bash scripts/verify.sh
+```
+
+`verify.sh` runs, in order: Python syntax compilation, `npm test`, `npm run build` and
+`npm run qa`. The same steps can also be run individually:
+
+```bash
+npm test          # offline unittest suite in examples/qa-selftest/
+npm run build     # generate the example deck
+npm run qa        # programmatic QA with --academic hints
 ```
 
 `build` generates the example and normalizes redundant paragraph properties from PptxGenJS
 while retaining rich text and native objects. `qa` checks text geometry, placeholders, fonts,
 editability, negative extents, known XML faults, and optional academic-density hints.
-`test` runs 13 behavioral regressions, including the original deliberately defective fixture.
+`test` discovers `examples/qa-selftest/test_*.py` and runs the offline regression suite —
+core QA heuristics and threshold boundaries, CLI exit codes and JSON report shapes, plus the
+original deliberately defective fixture. One rendering check is explicitly skipped because it
+needs a real PowerPoint install; see [DESIGN.md](DESIGN.md) for the full test strategy.
 GitHub Actions rebuilds the deck, runs QA and tests, and uploads the generated PPTX.
 
 For a different output path:
@@ -266,7 +276,9 @@ For a different output path:
 node examples/group-meeting-demo/build_demo.js /path/to/output.pptx
 ```
 
-Set `PYTHON` to a different Python interpreter if needed. The lockfile pins build dependencies;
+Set `PYTHON` to a different Python interpreter if needed, e.g.
+`PYTHON="py -3.12" bash scripts/verify.sh`. The override is honoured by `verify.sh`,
+`npm test`, `npm run qa` and the build script. The lockfile pins build dependencies;
 an image-size override selects the patched parser version.
 
 ## Render and inspect
@@ -289,6 +301,7 @@ shapes and lines; it does not establish scientific meaning or truth.
 ## Repository layout
 
 ```text
+DESIGN.md                         # Architecture, interfaces, data flow, boundary cases, test strategy
 skills/lyceum/
   SKILL.md                        # Routing, research content, native-object contract
   references/theme-index.md       # 19 themes, tokens, selection rules, prompt templates
@@ -301,6 +314,11 @@ examples/theme-preview/           # 19 theme + 6 scenario previews, contact shee
 examples/theme-preview/grids/     # 19 six-layout grids from a real 19-page deck
 examples/group-meeting-demo/      # Nine-slide deck, builder, all page previews
 examples/qa-selftest/             # Negative fixture and regressions
+  test_qa.py                      # Density, native exhibits, XML compatibility
+  test_qa_core.py                 # QA heuristics and threshold boundaries
+  test_qa_cli.py                  # CLI exit codes and JSON report shapes
+scripts/verify.sh                 # One-shot local verification
+scripts/py.js                     # Cross-platform Python launcher for npm scripts
 .github/workflows/quality.yml     # Build and test automation
 ```
 
